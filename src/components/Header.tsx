@@ -1,5 +1,6 @@
 import { Activity, Phone, ShoppingCart, User, Cpu, ShieldCheck, MapPin } from "lucide-react";
 import { motion } from "motion/react";
+import { Logo } from "./Logo";
 
 interface HeaderProps {
   currentTab: string;
@@ -57,17 +58,7 @@ export function Header({
             className="flex items-center gap-2.5 cursor-pointer select-none"
             id="brand-logo"
           >
-            <div className="w-10 h-10 rounded-xl bg-[#cf2027] flex items-center justify-center shadow-md shadow-red-500/20 antialiased">
-              <Activity className="w-5.5 h-5.5 text-white font-bold" />
-            </div>
-            <div>
-              <h1 className="font-display font-black text-lg sm:text-xl tracking-tight leading-none text-slate-950 uppercase">
-                LAHORE MEDICAL LAB
-              </h1>
-              <p className="text-[10px] text-[#cf2027] font-mono tracking-widest uppercase font-extrabold mt-0.5">
-                &amp; Diagnostic Centre
-              </p>
-            </div>
+            <Logo variant="horizontal" iconSize={44} />
           </div>
 
           {/* Desktop Navigation */}

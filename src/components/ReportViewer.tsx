@@ -1,5 +1,6 @@
 import { Printer, Calendar, User, FileText, CheckCircle, AlertTriangle, ArrowLeft } from "lucide-react";
 import { ClinicalReport } from "../types";
+import { Logo } from "./Logo";
 
 interface ReportViewerProps {
   report: ClinicalReport;
@@ -48,15 +49,7 @@ export function ReportViewer({ report, onBack }: ReportViewerProps) {
         <div className="bg-white text-slate-900 p-6 sm:p-8 border-b-2 border-[#cf2027]">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded bg-[#cf2027] flex items-center justify-center text-white font-black">LL</div>
-                <h1 className="font-display font-black text-lg sm:text-2xl tracking-tight uppercase text-slate-950">
-                  LAHORE MEDICAL LAB
-                </h1>
-              </div>
-              <p className="text-[10px] text-[#cf2027] font-mono tracking-widest uppercase font-black pl-10 mt-1">
-                Clinical Pathology &amp; Diagnostic Centre
-              </p>
+              <Logo variant="horizontal" iconSize={44} />
             </div>
             
             <div className="text-left sm:text-right font-mono text-xs text-slate-800 font-semibold">

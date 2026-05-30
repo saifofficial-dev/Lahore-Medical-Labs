@@ -1,4 +1,5 @@
 import { Award, Mail, PhoneCall, Heart, Clock, CheckCircle } from "lucide-react";
+import { Logo } from "./Logo";
 
 interface FooterProps {
   setTab: (tab: string) => void;
@@ -12,12 +13,8 @@ export function Footer({ setTab }: FooterProps) {
           
           {/* Logo & Slogan Column */}
           <div className="md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="w-8 h-8 rounded-lg bg-[#cf2027] flex items-center justify-center font-bold text-white">LL</span>
-              <div>
-                <span className="font-display font-bold text-slate-900 tracking-tight leading-none block">LAHORE MEDICAL LAB</span>
-                <span className="text-[9px] text-[#cf2027] font-mono tracking-wider font-semibold uppercase">Quality Is Our Priority</span>
-              </div>
+            <div className="mb-4">
+              <Logo variant="horizontal" iconSize={38} />
             </div>
             
             <p className="text-xs text-slate-600 leading-relaxed mb-6">
