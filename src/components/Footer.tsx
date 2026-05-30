@@ -120,6 +120,14 @@ export function Footer({ setTab }: FooterProps) {
                 </a>
               </li>
               <li className="flex items-center gap-2">
+                <svg className="w-4 h-4 text-[#25D366] fill-[#25D366] flex-shrink-0" viewBox="0 0 24 24">
+                  <path d="M12.004 2C6.48 2 2 6.48 2 12.004c0 1.908.533 3.692 1.457 5.22L2 22l4.912-1.396A9.954 9.954 0 0012.004 22c5.52 0 10-4.48 10-10C22.004 6.48 17.524 2 12.004 2zm5.796 14.128c-.24.672-1.212 1.236-1.74 1.308-.48.06-1.08.084-2.88-.66-2.316-.948-3.792-3.288-3.912-3.444-.108-.156-.912-1.212-.912-2.316 0-1.104.576-1.644.78-1.86.204-.216.444-.264.588-.264h.42c.132 0 .312-.048.48.36.18.432.612 1.488.66 1.596.048.108.084.228 0 .42-.084.18-.18.288-.312.444-.132.156-.276.324-.396.444-.132.132-.276.276-.12.54.156.264.696 1.14 1.488 1.848.792.708 1.464.924 1.74 1.056.276.132.432.108.588-.072.156-.18.672-.78.852-1.044.18-.264.36-.216.612-.12.252.096 1.584.744 1.86.876.276.132.456.204.516.312.06.108.06.624-.18 1.296z" />
+                </svg>
+                <a href="https://wa.me/923036088497?text=Hello%20Lahore%2520Medical%2520Lab.%20I%20want%2520to%20inquire%20about%2520diagnostic%2520tests." target="_blank" referrerPolicy="no-referrer" className="hover:text-[#25D366] text-slate-300 font-mono transition font-semibold">
+                  +92 303 6088497 (WhatsApp)
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#cf2027] flex-shrink-0" />
                 <a href="mailto:support@lahorelab.com.pk" className="hover:text-red-500 transition text-slate-300 font-mono">
                   support@lahorelab.com.pk

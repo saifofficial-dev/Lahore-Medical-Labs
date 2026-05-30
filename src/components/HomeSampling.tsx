@@ -47,6 +47,20 @@ export function HomeSampling({
     return tSum + pSum;
   }, [testsList, pkgsList]);
 
+  // Dynamically constructed WhatsApp URL for quick home collect booking support
+  const whatsappUrl = useMemo(() => {
+    const listNames = [
+      ...testsList.map((t) => t?.name),
+      ...pkgsList.map((p) => p?.name),
+    ];
+    const itemsText = listNames.length > 0
+      ? `\n\n*Selected Diagnostics:* \n- ${listNames.join("\n- ")}`
+      : "";
+    const totalText = totalAmount > 0 ? `\n*Estimated Total:* PKR ${totalAmount}` : "";
+    const message = `Hello Lahore Medical Lab, I'd like to book a Home Sample Collection.${itemsText}${totalText}\n\nPlease help me schedule my phlebotomist dispatcher appointment!`;
+    return `https://wa.me/923036088497?text=${encodeURIComponent(message)}`;
+  }, [testsList, pkgsList, totalAmount]);
+
   // Handle Booking Submit
   const handleBookingFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -398,6 +412,34 @@ export function HomeSampling({
             </div>
 
           </form>
+
+          {/* WhatsApp Alternative Quick Booking Banner */}
+          <div className="mt-8 p-5 bg-emerald-500/5 hover:bg-emerald-500/10 border border-[#25D366]/20 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-4 transition-all">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-[#25D366]/10 text-[#25D366] flex items-center justify-center flex-shrink-0 border border-[#25D366]/20">
+                <svg className="w-6.5 h-6.5 fill-[#25D366]" viewBox="0 0 24 24">
+                  <path d="M12.004 2C6.48 2 2 6.48 2 12.004c0 1.908.533 3.692 1.457 5.22L2 22l4.912-1.396A9.954 9.954 0 0012.004 22c5.52 0 10-4.48 10-10C22.004 6.48 17.524 2 12.004 2zm5.796 14.128c-.24.672-1.212 1.236-1.74 1.308-.48.06-1.08.084-2.88-.66-2.316-.948-3.792-3.288-3.912-3.444-.108-.156-.912-1.212-.912-2.316 0-1.104.576-1.644.78-1.86.204-.216.444-.264.588-.264h.42c.132 0 .312-.048.48.36.18.432.612 1.488.66 1.596.048.108.084.228 0 .42-.084.18-.18.288-.312.444-.132.156-.276.324-.396.444-.132.132-.276.276-.12.54.156.264.696 1.14 1.488 1.848.792.708 1.464.924 1.74 1.056.276.132.432.108.588-.072.156-.18.672-.78.852-1.044.18-.264.36-.216.612-.12.252.096 1.584.744 1.86.876.276.132.456.204.516.312.06.108.06.624-.18 1.296z" />
+                </svg>
+              </div>
+              <div className="space-y-1 text-left">
+                <h4 className="font-bold text-slate-850 text-sm">Or Book Instantly via WhatsApp!</h4>
+                <p className="text-xs text-slate-500 leading-normal">
+                  Filling forms can be slow on mobile. Tap to instantly message your clinical cart items or a photo of your doctor's prescription directly to our Phlebotomy Coordinator (+92 303 6088497).
+                </p>
+              </div>
+            </div>
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              referrerPolicy="no-referrer"
+              className="bg-[#25D366] hover:bg-[#128C7E] text-white font-black px-5 py-3 rounded-xl text-xs flex items-center gap-1.5 transition-all shadow-md shadow-emerald-500/10 cursor-pointer flex-shrink-0"
+            >
+              <span>Fast-Book via WhatsApp</span>
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M12.004 2C6.48 2 2 6.48 2 12.004c0 1.908.533 3.692 1.457 5.22L2 22l4.912-1.396A9.954 9.954 0 0012.004 22c5.52 0 10-4.48 10-10C22.004 6.48 17.524 2 12.004 2zm5.796 14.128c-.24.672-1.212 1.236-1.74 1.308-.48.06-1.08.084-2.88-.66-2.316-.948-3.792-3.288-3.912-3.444-.108-.156-.912-1.212-.912-2.316 0-1.104.576-1.644.78-1.86.204-.216.444-.264.588-.264h.42c.132 0 .312-.048.48.36.18.432.612 1.488.66 1.596.048.108.084.228 0 .42-.084.18-.18.288-.312.444-.132.156-.276.324-.396.444-.132.132-.276.276-.12.54.156.264.696 1.14 1.488 1.848.792.708 1.464.924 1.74 1.056.276.132.432.108.588-.072.156-.18.672-.78.852-1.044.18-.264.36-.216.612-.12.252.096 1.584.744 1.86.876.276.132.456.204.516.312.06.108.06.624-.18 1.296z" />
+              </svg>
+            </a>
+          </div>
 
         </div>
 
