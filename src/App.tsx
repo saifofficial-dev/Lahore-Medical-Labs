@@ -106,6 +106,9 @@ export default function App() {
   // Shopping cart popup modal state
   const [isCartOpen, setIsCartOpen] = useState(false);
 
+  // Active branch map index selection (defaults to 2 for Johar Town branch)
+  const [activeBranchIndex, setActiveBranchIndex] = useState(2);
+
   // Hero Quick-search state
   const [heroSearchInvoice, setHeroSearchInvoice] = useState("");
   const [heroSearchError, setHeroSearchError] = useState("");
@@ -545,64 +548,130 @@ export default function App() {
                         })}
                       </div>
                     </div>
-                  </div>
-
-                  {/* D. Lahore & Gujrat Branch finder map list directory */}
+                  </div>                  {/* D. Lahore & Gujrat Branch finder map list directory */}
                   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left" id="branches-list">
                     <div className="max-w-3xl mb-8 space-y-2">
-                      <span className="text-[10px] font-mono uppercase text-sky-655 text-sky-505 text-sky-500 font-extrabold tracking-widest block font-bold">Geographic Network</span>
+                      <span className="text-[10px] font-mono uppercase text-red-500 font-extrabold tracking-widest block font-bold">Geographic Network</span>
                       <h3 className="font-display font-black text-2.5xl text-slate-900 uppercase leading-none">Our Diagnostic Branches &amp; Collection Hubs</h3>
                       <p className="text-slate-500 text-xs sm:text-sm">
-                        Prefer on-site extraction or chest radiological imaging? Visit our state-of-the-art diagnostic collection outlets nearest to you.
+                        Prefer on-site extraction or chest radiological imaging? Select any branch from our verified medical collection outlets below to pin its exact coordinate mapping on the adjacent live Google Map.
                       </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {LAHORE_BRANCHES.map((branch, idx) => (
-                        <div key={idx} className="bg-white border border-slate-200 rounded-2.5xl p-5 shadow-xs flex flex-col justify-between">
-                          <div className="space-y-4">
-                            <div className="flex items-center gap-2 text-slate-800">
-                              <Building className="w-5 h-5 text-[#cf2027] flex-shrink-0" />
-                              <h4 className="font-bold text-xs sm:text-sm uppercase tracking-tight text-slate-900">{branch.name}</h4>
-                            </div>
-                            
-                            <p className="text-xs text-slate-500 leading-normal font-sans">
-                              {branch.address}
-                            </p>
-
-                            <div className="space-y-2 text-[11px] font-mono text-slate-500 pt-2 border-t border-slate-100">
-                              <p className="flex items-center gap-1.5">
-                                <Clock className="w-3.5 h-3.5 text-slate-400" />
-                                <span>{branch.hours}</span>
-                              </p>
-                              <p className="flex items-center gap-1.5">
-                                <Phone className="w-3.5 h-3.5 text-slate-400" />
-                                <span>{branch.phone}</span>
-                              </p>
-                            </div>
-
-                            <div className="flex flex-wrap gap-1 pt-2">
-                              {branch.services.map((serv, sIdx) => (
-                                <span key={sIdx} className="text-[8px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono">
-                                  {serv}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-
-                          <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-end">
-                            <a
-                              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(branch.mapQuery)}`}
-                              target="_blank"
-                              referrerPolicy="no-referrer"
-                              className="text-[11px] text-[#cf2027] font-extrabold flex items-center gap-1 hover:underline transition font-mono border border-red-500/10 px-3 py-1.5 bg-red-500/5 rounded-lg"
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                      {/* Left: List of Branches with click handler to set active branch map view */}
+                      <div className="lg:col-span-5 space-y-4 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
+                        {LAHORE_BRANCHES.map((branch, idx) => {
+                          const isActive = idx === activeBranchIndex;
+                          return (
+                            <div
+                              key={idx}
+                              onClick={() => setActiveBranchIndex(idx)}
+                              className={`cursor-pointer transition-all border rounded-2.5xl p-5 text-left flex flex-col justify-between ${
+                                isActive
+                                  ? "border-[#cf2027] bg-[#cf2027]/[0.02] shadow-sm ring-2 ring-red-500/5"
+                                  : "bg-white border-slate-200 hover:border-slate-350 hover:shadow-xs"
+                              }`}
                             >
-                              <span>Launch Map Directions</span>
-                              <ExternalLink className="w-3 h-3" />
-                            </a>
+                              <div className="space-y-3.5">
+                                <div className="flex justify-between items-start gap-2">
+                                  <div className="flex items-start gap-2 text-slate-800">
+                                    <Building className={`w-5 h-5 flex-shrink-0 mt-0.5 ${isActive ? "text-[#cf2027]" : "text-slate-400"}`} />
+                                    <div>
+                                      <h4 className="font-black text-xs sm:text-sm uppercase tracking-tight text-slate-900">{branch.name}</h4>
+                                      {idx === 2 && (
+                                        <span className="inline-block text-[8px] bg-red-100 text-[#cf2027] border border-red-200 px-1.5 py-0.5 rounded font-mono font-black mt-1 uppercase">
+                                          ★ User Coordinate Verified Lab
+                                        </span>
+                                      )}
+                                    </div>
+                                  </div>
+                                  {isActive && (
+                                    <span className="text-[9px] font-mono text-[#cf2027] uppercase font-black bg-red-50 px-2 py-0.5 rounded border border-red-100 flex items-center gap-1">
+                                      <span className="w-1.5 h-1.5 rounded-full bg-[#cf2027] animate-ping"></span>
+                                      Live View
+                                    </span>
+                                  )}
+                                </div>
+                                
+                                <p className="text-xs text-slate-550 leading-normal font-sans font-medium">
+                                  {branch.address}
+                                </p>
+
+                                <div className="space-y-1.5 text-[11px] font-mono text-slate-500 pt-2 border-t border-slate-100">
+                                  <p className="flex items-center gap-1.5">
+                                    <Clock className="w-3.5 h-3.5 text-slate-400" />
+                                    <span>{branch.hours}</span>
+                                  </p>
+                                  <p className="flex items-center gap-1.5">
+                                    <Phone className="w-3.5 h-3.5 text-slate-400" />
+                                    <span>{branch.phone}</span>
+                                  </p>
+                                </div>
+
+                                <div className="flex flex-wrap gap-1 pt-1">
+                                  {branch.services.map((serv, sIdx) => (
+                                    <span key={sIdx} className="text-[8px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono uppercase font-bold">
+                                      {serv}
+                                    </span>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      {/* Right: Embedded Interactive Live Google Map frame centered exactly at lat/lng coordinates */}
+                      <div className="lg:col-span-7 bg-white border border-slate-200 rounded-3xl p-4 shadow-xs md:sticky md:top-28 space-y-4">
+                        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-100 pb-3">
+                          <div>
+                            <h4 className="text-xs font-black uppercase text-slate-900 tracking-tight flex items-center gap-1.5">
+                              <MapPin className="w-4 h-4 text-[#cf2027] animate-bounce" />
+                              <span>Live Target Plot</span>
+                            </h4>
+                            <p className="text-[10.5px] text-slate-500 font-sans tracking-tight leading-none mt-1">
+                              {LAHORE_BRANCHES[activeBranchIndex].name}
+                            </p>
+                          </div>
+                          
+                          <a
+                            href={LAHORE_BRANCHES[activeBranchIndex].googleMapUrl}
+                            target="_blank"
+                            referrerPolicy="no-referrer"
+                            className="text-[10px] text-white font-black bg-[#cf2027] hover:bg-red-650 hover:bg-red-600 transition-all font-mono px-3 py-2 rounded-xl flex items-center gap-1 shadow-sm leading-none"
+                          >
+                            <span>Open In Google Maps</span>
+                            <ExternalLink className="w-3.5 h-3.5" />
+                          </a>
+                        </div>
+
+                        {/* Interactive Embed iframe container */}
+                        <div className="relative w-full h-[320px] sm:h-[390px] rounded-2.5xl overflow-hidden bg-slate-50 border border-slate-100">
+                          <iframe
+                            title="Interactive Location Map"
+                            src={`https://maps.google.com/maps?q=${LAHORE_BRANCHES[activeBranchIndex].lat},${LAHORE_BRANCHES[activeBranchIndex].lng}&z=16&output=embed`}
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0 }}
+                            allowFullScreen={true}
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            className="absolute inset-0 w-full h-full"
+                          ></iframe>
+                        </div>
+
+                        {/* Informative coordinates footer label */}
+                        <div className="bg-slate-50 p-3.5 rounded-2xl border border-slate-100 flex items-start gap-2.5">
+                          <span className="text-[9.5px] bg-[#cf2027]/10 text-[#cf2027] font-mono font-black px-1.5 py-0.5 rounded uppercase flex-shrink-0">
+                            GPS Coordinates
+                          </span>
+                          <div className="text-[10px] text-slate-500 leading-normal font-mono text-left">
+                            <span className="font-bold text-slate-700 block">Latitude: {LAHORE_BRANCHES[activeBranchIndex].lat} • Longitude: {LAHORE_BRANCHES[activeBranchIndex].lng}</span>
+                            <p className="mt-0.5 text-[9px] text-slate-400">Centered on safe clinical diagnostic lab guidelines in Lahore, PK.</p>
                           </div>
                         </div>
-                      ))}
+                      </div>
                     </div>
                   </div>
 

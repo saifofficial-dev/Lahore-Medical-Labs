@@ -305,7 +305,10 @@ export const LAHORE_BRANCHES = [
     phone: "042-111-522-522, 0300-8884441",
     hours: "Open 24/7",
     services: ["Diagnostics Lab", "Home Collection Hub", "X-Ray / Chest Imaging", "Ultrasound Pelvis & Abdomen", "CT Scan (Associated)", "Pediatric Sampling Room"],
-    mapQuery: "Lahore Medical Lab Gulberg Lahore"
+    mapQuery: "Lahore Medical Lab Gulberg Lahore",
+    lat: 31.541544,
+    lng: 74.321300,
+    googleMapUrl: "https://www.google.com/maps/search/?api=1&query=12-C,+Shadman+2,+Opposite+Punjab+Institute+of+Cardiology+Lahore"
   },
   {
     name: "DHA Collection Centre & Radiology",
@@ -313,7 +316,10 @@ export const LAHORE_BRANCHES = [
     phone: "042-35698412, 0321-8884441",
     hours: "07:00 AM - 11:59 PM (Sunday Closed)",
     services: ["Clinical Diagnostics", "Urgent Dengue NS1 / PCR Room", "Home Phlebotomy dispatch", "ECG Panel"],
-    mapQuery: "Lahore Medical Lab DHA Lahore"
+    mapQuery: "Lahore Medical Lab DHA Lahore",
+    lat: 31.470556,
+    lng: 74.409167,
+    googleMapUrl: "https://www.google.com/maps/search/?api=1&query=Sector+CCA,+Phase+5,+Near+Jalal+Sons,+DHA,+Lahore"
   },
   {
     name: "Johar Town Branch Centre",
@@ -321,7 +327,10 @@ export const LAHORE_BRANCHES = [
     phone: "042-35182963",
     hours: "08:00 AM - 10:00 PM (Weekly open)",
     services: ["Clinical Chemistry", "Microbiology Sampling", "Free Sample Collection drop-off point"],
-    mapQuery: "Lahore Medical Lab Johar Town Lahore"
+    mapQuery: "31.4750214,74.2413483",
+    lat: 31.4750214,
+    lng: 74.2413483,
+    googleMapUrl: "https://www.google.com/maps/place/31%C2%B028'30.1%22N+74%C2%B014'28.9%22E/@31.4750214,74.2387734,609m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d31.4750214!4d74.2413483?hl=en&entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D"
   },
   {
     name: "Iqbal Town Collection Booth",
@@ -329,7 +338,10 @@ export const LAHORE_BRANCHES = [
     phone: "042-37841525",
     hours: "08:00 AM - 10:00 PM",
     services: ["Diagnostics Blood Extraction", "Urine Container collection", "Report printing kiosk"],
-    mapQuery: "Lahore Medical Lab Iqbal Town Lahore"
+    mapQuery: "Lahore Medical Lab Iqbal Town Lahore",
+    lat: 31.524722,
+    lng: 74.288333,
+    googleMapUrl: "https://www.google.com/maps/search/?api=1&query=Moon+Market,+Main+Boulevard,+Allama+Iqbal+Town,+Lahore"
   },
   {
     name: "Lahore Medical Lab (Gujrat Branch)",
@@ -337,6 +349,9 @@ export const LAHORE_BRANCHES = [
     phone: "053-3725412, 0301-8884442",
     hours: "08:00 AM - 10:00 PM (Weekly open)",
     services: ["Main Lab System in Gujrat Division", "Home Sampling Desk", "X-Ray Clinic"],
-    mapQuery: "Lahore Medical Lab Gujrat"
+    mapQuery: "Lahore Medical Lab Gujrat",
+    lat: 32.585556,
+    lng: 74.078611,
+    googleMapUrl: "https://www.google.com/maps/search/?api=1&query=Bhimber+Road,+Opposite+District+Headquarters+Hospital,+Gujrat"
   }
 ];
