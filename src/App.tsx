@@ -178,7 +178,7 @@ export default function App() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-slate-50 relative selection:bg-rose-500/20 selection:text-slate-900 font-sans print:bg-white print:text-black">
+    <div className="flex flex-col min-h-screen bg-white relative selection:bg-rose-500/20 selection:text-slate-900 font-sans print:bg-white print:text-black">
       
       {/* 1. Omnipresent Navbar Header */}
       <Header
@@ -240,10 +240,10 @@ export default function App() {
                   className="space-y-16 pb-16"
                 >
                   {/* A. Hero banner Section */}
-                  <div className="bg-[#0c2340] text-white relative py-16 sm:py-24 px-4 sm:px-6 overflow-hidden border-b border-rose-500/10">
+                  <div className="bg-white text-slate-950 relative py-16 sm:py-24 px-4 sm:px-6 overflow-hidden border-b border-slate-200">
                     {/* Visual pattern rings backgrounds */}
                     <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-red-500/5 rounded-full blur-3xl transform translate-x-1/3 -translate-y-1/3"></div>
-                    <div className="absolute -bottom-10 left-0 w-[300px] h-[300px] bg-sky-500/[0.03] rounded-full blur-2xl"></div>
+                    <div className="absolute -bottom-10 left-0 w-[300px] h-[300px] bg-red-500/[0.02] rounded-full blur-2xl"></div>
 
                     <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative text-left">
                       
@@ -251,27 +251,27 @@ export default function App() {
                       <div className="lg:col-span-7 space-y-6">
                         <div className="flex items-center gap-2 bg-red-500/10 border border-red-500/20 px-3 py-1.5 rounded-full w-fit">
                           <ShieldCheck className="w-4 h-4 text-[#cf2027]" />
-                          <span className="text-[11px] sm:text-xs font-mono font-extrabold uppercase text-slate-250 text-slate-200 tracking-wider">
+                          <span className="text-[11px] sm:text-xs font-mono font-extrabold uppercase text-[#cf2027] tracking-wider">
                             Punjab Healthcare Commission ISO Centralized Laboratory
                           </span>
                         </div>
 
-                        <h1 className="font-display font-black text-3.5xl sm:text-5.5xl tracking-tight leading-none text-slate-100 uppercase">
+                        <h1 className="font-display font-black text-3.5xl sm:text-5.5xl tracking-tight leading-none text-slate-950 uppercase">
                           Precision Diagnostics, <br />
                           <span className="text-[#cf2027]">Trustworthy Healthcare</span>
                         </h1>
 
-                        <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl">
+                        <p className="text-slate-700 text-sm sm:text-base leading-relaxed max-w-xl font-medium">
                           Lahore Chemical &amp; Clinical Laboratory delivers clinical chemistry, specialized hormonal assays, and advanced abdominal radiological investigations under over 4 decades of physician trust. 
                         </p>
 
                         {/* Interactive Hero Quick-Search Box (Report downloader) */}
-                        <div className="bg-white/10 backdrop-blur-md border border-white/15 p-5 rounded-2.5xl max-w-lg mt-8 shadow-2xl">
-                          <h3 className="text-xs font-mono font-extrabold uppercase text-sky-400 tracking-widest flex items-center gap-1.5 mb-2 leading-none">
-                            <Activity className="w-3.5 h-3.5 text-sky-400" />
+                        <div className="bg-slate-50 border border-slate-200 p-5 rounded-2.5xl max-w-lg mt-8 shadow-sm">
+                          <h3 className="text-xs font-mono font-black uppercase text-[#cf2027] tracking-widest flex items-center gap-1.5 mb-2 leading-none">
+                            <Activity className="w-3.5 h-3.5 text-[#cf2027]" />
                             <span>Retrieve Lab Reports Instantly Online</span>
                           </h3>
-                          <p className="text-[11px] text-slate-400 mb-4 font-normal">
+                          <p className="text-[11px] text-slate-600 mb-4 font-normal">
                             Retrieve current lab reports by entering your invoice receipt code instantly below.
                           </p>
 
@@ -289,11 +289,11 @@ export default function App() {
                               placeholder="Enter Invoice No (e.g. LL-2026-9876)"
                               value={heroSearchInvoice}
                               onChange={(e) => setHeroSearchInvoice(e.target.value)}
-                              className="bg-slate-950/60 border border-slate-700 rounded-xl px-4 py-3 placeholder-slate-500 text-sm focus:ring-2 focus:ring-red-500/25 focus:border-[#cf2027] focus:outline-none flex-grow font-mono uppercase tracking-wider text-slate-100"
+                              className="bg-white border border-slate-300 rounded-xl px-4 py-3 placeholder-slate-400 text-sm focus:ring-2 focus:ring-red-500/25 focus:border-[#cf2027] focus:outline-none flex-grow font-mono uppercase tracking-wider text-slate-900"
                             />
                             <button
                               type="submit"
-                              className="bg-[#cf2027] hover:bg-red-650 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl text-xs transition cursor-pointer flex items-center justify-center gap-1.5 flex-shrink-0 shadow-lg shadow-red-500/15"
+                              className="bg-[#cf2027] hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl text-xs transition cursor-pointer flex items-center justify-center gap-1.5 flex-shrink-0 shadow-lg shadow-red-500/15"
                             >
                               <Search className="w-4.5 h-4.5" />
                               <span>Inspect Report</span>
@@ -301,20 +301,20 @@ export default function App() {
                           </form>
 
                           {heroSearchError && (
-                            <p className="text-xs text-rose-400 font-semibold mt-2.5 flex items-center gap-1">
+                            <p className="text-xs text-rose-600 font-semibold mt-2.5 flex items-center gap-1">
                               <span>⚠</span>
                               <span className="lowercase normal-case">{heroSearchError}</span>
                             </p>
                           )}
 
-                          <div className="text-[10px] text-slate-400 mt-3 font-mono flex flex-wrap gap-2.5">
+                          <div className="text-[10px] text-slate-600 mt-3 font-mono flex flex-wrap gap-2.5">
                             <span>Suggestions:</span>
                             <button 
                               onClick={() => {
                                 setHeroSearchInvoice("LL-2026-9876");
                                 handleInspectReportByInvoice("LL-2026-9876");
                               }}
-                              className="text-sky-400 hover:underline cursor-pointer"
+                              className="text-[#cf2027] hover:underline cursor-pointer font-black"
                             >
                               "LL-2026-9876" (Ali)
                             </button>
@@ -324,7 +324,7 @@ export default function App() {
                                 setHeroSearchInvoice("LL-2026-1212");
                                 handleInspectReportByInvoice("LL-2026-1212");
                               }}
-                              className="text-sky-400 hover:underline cursor-pointer"
+                              className="text-[#cf2027] hover:underline cursor-pointer font-black"
                             >
                               "LL-2026-1212" (Ayesha)
                             </button>
@@ -421,27 +421,27 @@ export default function App() {
                         <div className="grid grid-cols-2 gap-4">
                           <div
                             onClick={() => setTab("booking")}
-                            className="bg-slate-800/80 hover:bg-slate-800 hover:border-red-500/30 border border-slate-700/60 p-4.5 rounded-2xl text-left cursor-pointer transition-all flex items-center gap-3 group"
+                            className="bg-slate-50 hover:bg-slate-100 hover:border-[#cf2027]/35 border border-slate-200 p-4.5 rounded-2xl text-left cursor-pointer transition-all flex items-center gap-3 group"
                           >
                             <div className="w-9 h-9 rounded-xl bg-[#cf2027]/10 border border-[#cf2027]/20 text-[#cf2027] flex items-center justify-center flex-shrink-0">
                               <Truck className="w-4.5 h-4.5 group-hover:translate-x-0.5 transition-transform" />
                             </div>
                             <div>
-                              <h4 className="text-[11px] font-mono font-bold uppercase text-red-400">Sampling Dispatch</h4>
-                              <p className="text-[12px] font-bold text-slate-100 group-hover:text-red-400 transition-colors">Book Free Home Extraction</p>
+                              <h4 className="text-[11px] font-mono font-black uppercase text-[#cf2027]">Sampling Dispatch</h4>
+                              <p className="text-[12px] font-black text-slate-900 group-hover:text-[#cf2027] transition-colors">Book Free Sampling</p>
                             </div>
                           </div>
 
                           <div
                             onClick={() => setTab("advisor")}
-                            className="bg-slate-800/80 hover:bg-slate-800 hover:border-red-500/30 border border-slate-700/60 p-4.5 rounded-2xl text-left cursor-pointer transition-all flex items-center gap-3 group"
+                            className="bg-slate-50 hover:bg-slate-100 hover:border-[#cf2027]/35 border border-slate-200 p-4.5 rounded-2xl text-left cursor-pointer transition-all flex items-center gap-3 group"
                           >
-                            <div className="w-9 h-9 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center flex-shrink-0">
+                            <div className="w-9 h-9 rounded-xl bg-red-500/10 border border-red-500/20 text-[#cf2027] flex items-center justify-center flex-shrink-0">
                               <Cpu className="w-4.5 h-4.5 group-hover:scale-105 transition-transform" />
                             </div>
                             <div>
-                              <h4 className="text-[11px] font-mono font-bold uppercase text-sky-400">AI Diagnostics</h4>
-                              <p className="text-[12px] font-bold text-slate-100 group-hover:text-sky-450 hover:text-sky-400 transition-colors">Symptom Test Advisor</p>
+                              <h4 className="text-[11px] font-mono font-black uppercase text-[#cf2027]">AI Diagnostics</h4>
+                              <p className="text-[12px] font-black text-slate-900 group-hover:text-[#cf2027] transition-colors">Symptom Test Advisor</p>
                             </div>
                           </div>
                         </div>

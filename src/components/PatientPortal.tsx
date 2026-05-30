@@ -282,7 +282,7 @@ export function PatientPortal({
           {/* Diagnostic report search & Info column */}
           <div className="md:col-span-7 flex flex-col justify-center space-y-6">
             <div>
-              <span className="px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-600 text-xs font-mono font-bold tracking-wide uppercase">
+              <span className="px-3.5 py-1.5 rounded-full bg-red-100 text-[#cf2027] text-xs font-mono font-black tracking-wide uppercase border border-red-200">
                 Patient Empowerment Portal
               </span>
               <h2 className="font-display font-black text-3xl sm:text-4xl text-slate-900 tracking-tight leading-tight mt-3">
@@ -296,7 +296,7 @@ export function PatientPortal({
             {/* Direct Invoice Quick search box */}
             <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-md w-full">
               <h3 className="text-sm font-bold text-slate-800 flex items-center gap-1.5 uppercase mb-2">
-                <Search className="w-4 h-4 text-emerald-500" />
+                <Search className="w-4 h-4 text-[#cf2027]" />
                 <span>Quick Report Retrieval (Instant Download)</span>
               </h3>
               <p className="text-xs text-slate-400 mb-4 normal-case">
@@ -309,11 +309,11 @@ export function PatientPortal({
                   placeholder="Enter Invoice No (e.g., LL-2026-9876)"
                   value={searchInvoiceDirect}
                   onChange={(e) => setSearchInvoiceDirect(e.target.value)}
-                  className="bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-800 text-sm focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 focus:outline-none flex-grow font-mono uppercase tracking-wider"
+                  className="bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-800 text-sm focus:ring-2 focus:ring-red-500/20 focus:border-[#cf2027] focus:outline-none flex-grow font-mono uppercase tracking-wider font-semibold"
                 />
                 <button
                   type="submit"
-                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-6 py-3 rounded-xl font-bold text-sm transition shadow-md shadow-emerald-500/10 cursor-pointer flex items-center justify-center gap-1.5"
+                  className="bg-[#cf2027] hover:bg-red-650 hover:bg-red-600 text-white px-6 py-3 rounded-xl font-bold text-sm transition shadow-md shadow-red-500/15 cursor-pointer flex items-center justify-center gap-1.5"
                 >
                   <Search className="w-4 h-4" />
                   <span>Fetch Report</span>
@@ -339,11 +339,11 @@ export function PatientPortal({
                     <div
                       key={demo.patientId}
                       onClick={() => handleDemoLoginClick(demo, invoice)}
-                      className="bg-white border border-slate-200/70 p-3.5 rounded-xl cursor-pointer hover:border-emerald-400 hover:shadow-md transition text-left"
+                      className="bg-white border border-slate-200/70 p-3.5 rounded-xl cursor-pointer hover:border-[#cf2027] hover:shadow-sm transition text-left"
                     >
-                      <h4 className="text-xs font-bold text-slate-800">{demo.name}</h4>
-                      <p className="text-[10px] font-mono text-slate-500 mt-1">Patient ID: {demo.patientId}</p>
-                      <p className="text-[10px] font-mono text-emerald-600 font-bold mt-0.5">Inv: {invoice}</p>
+                      <h4 className="text-xs font-black text-slate-800">{demo.name}</h4>
+                      <p className="text-[10px] font-mono text-slate-500 mt-1">ID: {demo.patientId}</p>
+                      <p className="text-[10px] font-mono text-[#cf2027] font-black mt-0.5">Inv: {invoice}</p>
                       <span className="inline-block text-[8px] bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded-md mt-2 font-mono font-bold uppercase">
                         {demo.patientId === "LA-88392" ? "Cholesterol" : (demo.patientId === "LA-45321" ? "Diabetes" : "Thyroid")}
                       </span>
@@ -357,12 +357,12 @@ export function PatientPortal({
 
           {/* Secure Login Form column */}
           <div className="md:col-span-5 flex items-center">
-            <div className="bg-slate-900 border border-slate-800 text-white rounded-3xl p-8 shadow-2xl w-full">
+            <div className="bg-white border border-slate-200 text-slate-900 rounded-3xl p-8 shadow-sm w-full">
               <div className="text-center mb-6">
-                <div className="w-12 h-12 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                <div className="w-12 h-12 bg-red-50 border border-red-200 text-[#cf2027] rounded-2xl flex items-center justify-center mx-auto mb-3">
                   <User className="w-6 h-6" />
                 </div>
-                <h3 className="font-display font-bold text-xl text-slate-100">Patient Credentials Access</h3>
+                <h3 className="font-display font-black text-xl text-slate-950 uppercase">Patient Credentials Access</h3>
                 <p className="text-xs text-slate-500 mt-1">
                   Authenticate using the receipts issued by clinical registrars.
                 </p>
@@ -370,40 +370,40 @@ export function PatientPortal({
 
               <form onSubmit={handleLoginSubmit} className="space-y-4">
                 <div>
-                  <label className="text-[11px] font-mono uppercase text-slate-400 tracking-wider block mb-1">
+                  <label className="text-[11px] font-mono uppercase text-slate-600 tracking-wider block mb-1 font-bold">
                     Patient ID Account Number
                   </label>
                   <div className="relative">
-                    <User className="absolute left-3 top-3 w-5 h-5 text-slate-500" />
+                    <User className="absolute left-3 top-3.5 w-4 h-4 text-slate-400" />
                     <input
                       type="text"
                       placeholder="e.g., LA-88392"
                       value={patientId}
                       onChange={(e) => setPatientId(e.target.value)}
-                      className="bg-slate-950/60 border border-slate-700/80 rounded-xl px-10 py-3 text-slate-200 text-sm w-full focus:ring-2 focus:ring-emerald-500/25 focus:border-emerald-500 focus:outline-none font-mono uppercase"
+                      className="bg-white border border-slate-300 rounded-xl px-10 py-3 text-slate-900 text-sm w-full focus:ring-2 focus:ring-red-500/20 focus:border-[#cf2027] focus:outline-none font-mono uppercase font-bold"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-[11px] font-mono uppercase text-slate-400 tracking-wider block mb-1">
+                  <label className="text-[11px] font-mono uppercase text-slate-600 tracking-wider block mb-1 font-bold">
                     Invoice No / Patient Passcode
                   </label>
                   <div className="relative">
-                    <Key className="absolute left-3 top-3 w-5 h-5 text-slate-500" />
+                    <Key className="absolute left-3 top-3.5 w-4 h-4 text-slate-400" />
                     <input
                       type="password"
                       placeholder="e.g., LL-2026-9876"
                       value={invoiceNo}
                       onChange={(e) => setInvoiceNo(e.target.value)}
-                      className="bg-slate-950/60 border border-slate-700/80 rounded-xl px-10 py-3 text-slate-200 text-sm w-full focus:ring-2 focus:ring-emerald-500/25 focus:border-emerald-500 focus:outline-none font-mono uppercase"
+                      className="bg-white border border-slate-300 rounded-xl px-10 py-3 text-slate-900 text-sm w-full focus:ring-2 focus:ring-red-500/20 focus:border-[#cf2027] focus:outline-none font-mono uppercase font-bold"
                     />
                   </div>
                 </div>
 
                 <button
                   type="submit"
-                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-6 py-3.5 rounded-xl text-sm w-full transition shadow-md shadow-emerald-500/10 cursor-pointer text-center flex items-center justify-center gap-1.5 mt-8"
+                  className="bg-[#cf2027] hover:bg-red-600 text-white font-bold px-6 py-3.5 rounded-xl text-xs w-full transition shadow-md shadow-red-500/15 cursor-pointer text-center flex items-center justify-center gap-1.5 mt-8"
                 >
                   <CheckCircle className="w-4 h-4" />
                   <span>Authenticate Dashboard</span>
@@ -554,12 +554,12 @@ export function PatientPortal({
             <div className="lg:col-span-5 space-y-8">
               
               {/* AI smart wellness overview */}
-              <div className="bg-slate-900 border border-slate-800 text-white rounded-3xl p-6 shadow-xl relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-36 h-36 bg-emerald-500/5 rounded-full blur-2xl transform translate-x-12 -translate-y-12"></div>
+              <div className="bg-white border border-slate-200 text-slate-900 rounded-3xl p-6 shadow-sm relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-36 h-36 bg-red-500/5 rounded-full blur-2xl transform translate-x-12 -translate-y-12"></div>
                 
-                <div className="flex items-center gap-2 text-emerald-400 mb-4">
-                  <Sparkles className="w-5 h-5 animate-pulse" />
-                  <span className="text-xs font-mono uppercase tracking-widest font-extrabold flex items-center gap-1.5 text-emerald-300">
+                <div className="flex items-center gap-2 text-[#cf2027] mb-4">
+                  <Sparkles className="w-5 h-5 animate-pulse text-[#cf2027]" />
+                  <span className="text-xs font-mono uppercase tracking-widest font-extrabold flex items-center gap-1.5 text-[#cf2027]">
                     Smart AI Clinical Analysis
                   </span>
                 </div>
@@ -569,28 +569,28 @@ export function PatientPortal({
                   return (
                     <div className="space-y-5">
                       <div>
-                        <h4 className="text-slate-400 text-xs">Vitals Diagnostic Mapping</h4>
-                        <p className="text-sm font-black text-slate-100 font-display tracking-tight leading-snug mt-1 uppercase">
+                        <h4 className="text-slate-500 text-xs font-bold">Vitals Diagnostic Mapping</h4>
+                        <p className="text-sm font-black text-slate-950 font-display tracking-tight leading-snug mt-1 uppercase">
                           {advice.overall}
                         </p>
                       </div>
 
                       {/* Warnings alert */}
-                      <div className="bg-slate-950/70 border border-slate-800 p-3.5 rounded-xl flex items-start gap-2.5">
-                        <AlertCircle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
-                        <div className="text-xs leading-relaxed text-slate-300">
-                          <p className="font-semibold text-amber-500 font-mono text-[10px] uppercase">Pathology Caution</p>
+                      <div className="bg-red-50/50 border border-red-100 p-3.5 rounded-xl flex items-start gap-2.5">
+                        <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                        <div className="text-xs leading-relaxed text-slate-800 font-semibold">
+                          <p className="font-semibold text-amber-600 font-mono text-[10px] uppercase">Pathology Caution</p>
                           <p className="mt-1 lowercase normal-case">{advice.alerts}</p>
                         </div>
                       </div>
 
                       {/* Custom Diet lists */}
                       <div className="space-y-1.5">
-                        <h5 className="text-[10px] font-mono font-bold uppercase text-slate-400 tracking-wider">Suggested Pakistani Diet Intake</h5>
-                        <ul className="space-y-2 text-xs text-slate-300">
+                        <h5 className="text-[10px] font-mono font-bold uppercase text-slate-500 tracking-wider">Suggested Pakistani Diet Intake</h5>
+                        <ul className="space-y-2 text-xs text-slate-800 font-semibold">
                           {advice.diet.map((it, idx) => (
-                            <li key={idx} className="flex items-start gap-1.5 text-[11px] leading-relaxed lowercase normal-case">
-                              <span className="text-emerald-500 font-bold flex-shrink-0 mt-0.5">&bull;</span>
+                            <li key={idx} className="flex items-start gap-1.5 text-[11px] leading-relaxed lowercase normal-case font-medium">
+                              <span className="text-[#cf2027] font-bold flex-shrink-0 mt-0.5">&bull;</span>
                               <span>{it}</span>
                             </li>
                           ))}
@@ -599,12 +599,12 @@ export function PatientPortal({
 
                       {/* Recommended screening followup */}
                       <div className="space-y-1.5">
-                        <h5 className="text-[10px] font-mono font-bold uppercase text-slate-400 tracking-wider">Suggested Diagnostics Follow-up</h5>
-                        <ul className="space-y-1 text-xs text-emerald-400 font-mono">
+                        <h5 className="text-[10px] font-mono font-bold uppercase text-slate-505 tracking-wider">Suggested Diagnostics Follow-up</h5>
+                        <ul className="space-y-1 text-xs text-[#cf2027] font-mono font-black">
                           {advice.followups.map((f, fIdx) => (
                             <li key={fIdx} className="flex items-center gap-2">
-                              <CheckCircle className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
-                              <span className="text-[11px] text-slate-300">{f}</span>
+                              <CheckCircle className="w-3.5 h-3.5 text-[#cf2027] flex-shrink-0" />
+                              <span className="text-[11px] text-slate-800">{f}</span>
                             </li>
                           ))}
                         </ul>
@@ -615,7 +615,7 @@ export function PatientPortal({
                 })()}
 
                 {/* Professional clinical disclaimer */}
-                <p className="text-[9px] text-slate-500 leading-normal border-t border-slate-800 pt-4 mt-6 lowercase normal-case">
+                <p className="text-[9px] text-slate-500 leading-normal border-t border-slate-200 pt-4 mt-6 lowercase normal-case">
                   *Disclaimer: AI Clinical recommendations are computed based on clinical ranges. Final evaluation and therapeutic prescriptions must be authorised by your FCPS/MBBS consultant doctor.*
                 </p>
               </div>

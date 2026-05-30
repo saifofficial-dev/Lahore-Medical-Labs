@@ -45,56 +45,56 @@ export function ReportViewer({ report, onBack }: ReportViewerProps) {
       <div className="max-w-4xl mx-auto bg-white border border-slate-200 rounded-2xl shadow-xl overflow-hidden print:shadow-none print:border-none print:rounded-none">
         
         {/* Document Header representation */}
-        <div className="bg-slate-900 text-white p-6 sm:p-8 border-b border-rose-500/15">
+        <div className="bg-white text-slate-900 p-6 sm:p-8 border-b-2 border-[#cf2027]">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded bg-emerald-500 flex items-center justify-center text-slate-950 font-black">LL</div>
-                <h1 className="font-display font-black text-lg sm:text-2xl tracking-tight uppercase">
+                <div className="w-8 h-8 rounded bg-[#cf2027] flex items-center justify-center text-white font-black">LL</div>
+                <h1 className="font-display font-black text-lg sm:text-2xl tracking-tight uppercase text-slate-950">
                   LAHORE MEDICAL LAB
                 </h1>
               </div>
-              <p className="text-[10px] text-emerald-400 font-mono tracking-widest uppercase font-semibold pl-10 mt-1">
+              <p className="text-[10px] text-[#cf2027] font-mono tracking-widest uppercase font-black pl-10 mt-1">
                 Clinical Pathology &amp; Diagnostic Centre
               </p>
             </div>
             
-            <div className="text-left sm:text-right font-mono text-xs text-slate-300">
-              <p className="font-bold text-emerald-400 text-sm">INVOICE NO: {report.invoiceNo}</p>
+            <div className="text-left sm:text-right font-mono text-xs text-slate-800 font-semibold">
+              <p className="font-black text-[#cf2027] text-sm">INVOICE NO: {report.invoiceNo}</p>
               <p>PATIENT ID: {report.patientId}</p>
-              <p className="text-[10px] text-slate-400">STATUS: Released (Online Certified)</p>
+              <p className="text-[10px] text-slate-500 font-normal">STATUS: Released (Online Certified)</p>
             </div>
           </div>
 
-          <div className="mt-6 pt-4 border-t border-slate-800 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-mono">
+          <div className="mt-6 pt-4 border-t border-slate-200 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-mono">
             <div>
               <span className="text-slate-500 block text-[10px] uppercase">Registered Patient</span>
-              <span className="text-slate-200 font-bold block">{report.patientName}</span>
+              <span className="text-slate-900 font-bold block">{report.patientName}</span>
             </div>
             <div>
               <span className="text-slate-500 block text-[10px] uppercase">Age / Gender</span>
-              <span className="text-slate-200 font-bold block">{report.age} Years / {report.gender}</span>
+              <span className="text-slate-900 font-bold block">{report.age} Years / {report.gender}</span>
             </div>
             <div>
               <span className="text-slate-500 block text-[10px] uppercase">Ref. Specialist</span>
-              <span className="text-slate-200 font-bold block truncate">{report.referringDoctor}</span>
+              <span className="text-slate-900 font-bold block truncate">{report.referringDoctor}</span>
             </div>
             <div>
               <span className="text-slate-500 block text-[10px] uppercase">Reporting Date</span>
-              <span className="text-slate-200 font-bold block">{formatFullDate(report.reportingDate).split(" @")[0]}</span>
+              <span className="text-slate-900 font-bold block">{formatFullDate(report.reportingDate).split(" @")[0]}</span>
             </div>
           </div>
         </div>
 
         {/* Dynamic Patient Alerts Bar */}
-        <div className="bg-emerald-500/5 px-6 py-3 border-b border-emerald-500/10 flex flex-col sm:flex-row items-center justify-between gap-2.5 print:hidden">
-          <div className="flex items-center gap-2 text-xs font-medium text-emerald-800">
-            <CheckCircle className="w-4 h-4 text-emerald-600" />
+        <div className="bg-red-50/50 px-6 py-3 border-b border-red-100 flex flex-col sm:flex-row items-center justify-between gap-2.5 print:hidden">
+          <div className="flex items-center gap-2 text-xs font-black text-[#cf2027]">
+            <CheckCircle className="w-4 h-4 text-[#cf2027]" />
             <span>Digital QR Verified - QR Sealed Secure Lab Report</span>
           </div>
           <button
             onClick={handlePrint}
-            className="flex items-center gap-1.5 text-xs font-bold text-slate-800 bg-emerald-400 hover:bg-emerald-500 hover:text-slate-950 transition-all px-4 py-1.5 rounded-lg shadow-sm cursor-pointer"
+            className="flex items-center gap-1.5 text-xs font-bold text-white bg-slate-900 hover:bg-slate-850 transition-all px-4 py-1.5 rounded-lg shadow-sm cursor-pointer"
           >
             <Printer className="w-3.5 h-3.5" />
             <span>Print / Save PDF</span>
@@ -213,12 +213,12 @@ export function ReportViewer({ report, onBack }: ReportViewerProps) {
 
           {/* Expert Overall Pathology Assessment */}
           {report.overallAssessment && (
-            <div className="bg-slate-900/5 border border-slate-200/80 p-5 rounded-2xl space-y-2 mt-8">
-              <h4 className="flex items-center gap-2 text-xs font-bold text-slate-800 tracking-wide uppercase">
-                <FileText className="w-4 h-4 text-emerald-600" />
+            <div className="bg-red-50/20 border border-red-100 p-5 rounded-2xl space-y-2 mt-8">
+              <h4 className="flex items-center gap-2 text-xs font-bold text-slate-900 tracking-wide uppercase">
+                <FileText className="w-4 h-4 text-[#cf2027]" />
                 <span>Executive Pathologist Overall Clinical Assessment</span>
               </h4>
-              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic font-sans font-normal lowercase normal-case">
+              <p className="text-xs sm:text-sm text-slate-800 leading-relaxed italic font-sans font-normal lowercase normal-case">
                 "{report.overallAssessment}"
               </p>
             </div>
@@ -230,8 +230,8 @@ export function ReportViewer({ report, onBack }: ReportViewerProps) {
           
           <div className="space-y-1 font-sans text-xs">
             <h5 className="font-extrabold text-slate-800">Lahore Medical Laboratories Verification</h5>
-            <p className="text-[10px] text-slate-500 font-normal">Registered under Punjab Health Commission PHC-3841</p>
-            <p className="text-[10px] text-slate-500 font-normal">All systems processed under internationally standardized EQAS controls.</p>
+            <p className="text-[10px] text-slate-550 font-normal">Registered under Punjab Health Commission PHC-3841</p>
+            <p className="text-[10px] text-slate-550 font-normal">All systems processed under internationally standardized EQAS controls.</p>
           </div>
 
           {/* Pathologist Doctor Stamps Representation */}
@@ -240,16 +240,16 @@ export function ReportViewer({ report, onBack }: ReportViewerProps) {
               <p className="font-bold text-slate-800 uppercase text-[11px]">Prof. Dr. Munir Ahmad</p>
               <p className="text-slate-500 font-mono">MBBS, FCPS (Pathology)</p>
               <p className="text-slate-400 font-mono">Principal Consultant Pathologist</p>
-              <div className="h-0.5 bg-emerald-500 w-12 mx-auto my-1.5"></div>
-              <p className="text-emerald-600 uppercase font-mono font-bold text-[9px]">Verified Signed</p>
+              <div className="h-0.5 bg-[#cf2027] w-12 mx-auto my-1.5"></div>
+              <p className="text-[#cf2027] uppercase font-mono font-bold text-[9px]">Verified Signed</p>
             </div>
             
             <div className="text-center font-serif text-[10px] lowercase normal-case border border-slate-200 p-2.5 bg-white rounded-lg inline-block shadow-sm">
               <p className="font-bold text-slate-800 uppercase text-[11px]">Dr. Tariq Hassan</p>
               <p className="text-slate-500 font-mono">MBBS, PhD (Clinical Chemistry)</p>
               <p className="text-slate-400 font-mono">Chief Clinical Biochemist</p>
-              <div className="h-0.5 bg-emerald-500 w-12 mx-auto my-1.5"></div>
-              <p className="text-emerald-600 uppercase font-mono font-bold text-[9px]">Verified Signed</p>
+              <div className="h-0.5 bg-[#cf2027] w-12 mx-auto my-1.5"></div>
+              <p className="text-[#cf2027] uppercase font-mono font-bold text-[9px]">Verified Signed</p>
             </div>
           </div>
 

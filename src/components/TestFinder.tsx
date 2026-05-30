@@ -65,13 +65,13 @@ export function TestFinder({
       
       {/* Intro section */}
       <div className="text-center max-w-3xl mx-auto mb-10">
-        <span className="px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-600 text-xs font-mono font-bold tracking-wide uppercase">
+        <span className="px-3.5 py-1.5 rounded-full bg-red-100 text-[#cf2027] text-xs font-mono font-black tracking-wide uppercase border border-red-200">
           Diagnostic Directory
         </span>
         <h2 className="font-display font-black text-3xl sm:text-4xl text-slate-905 tracking-tight leading-none mt-3">
           Explore Our Tests &amp; Healthcare Packages
         </h2>
-        <p className="text-slate-500 text-sm mt-3.5 leading-relaxed">
+        <p className="text-slate-550 text-sm mt-3.5 leading-relaxed font-semibold">
           Search over 100+ clinical parameters, hormones profiles and radiology procedures. Add items directly to your diagnostic cart of choices to book our ISO certified Phlebotomist dispatch for home sampling collections.
         </p>
       </div>
@@ -83,8 +83,8 @@ export function TestFinder({
           
           {/* A. Dynamic Health Screening Packages Slider Grid */}
           <div>
-            <h3 className="text-base font-extrabold uppercase tracking-wide text-slate-800 mb-4 flex items-center gap-2">
-              <CheckCircle className="w-5 h-5 text-emerald-500" />
+            <h3 className="text-base font-black uppercase tracking-wide text-slate-900 mb-4 flex items-center gap-2">
+              <CheckCircle className="w-5 h-5 text-[#cf2027]" />
               <span>Recommended Wellness Screening Packages</span>
             </h3>
 
@@ -95,15 +95,15 @@ export function TestFinder({
                   <div
                     key={pkg.id}
                     className={`bg-white border rounded-2xl p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between ${
-                      isSelected ? "border-emerald-500 ring-2 ring-emerald-500/5 bg-emerald-500/[0.01]" : "border-slate-200"
+                      isSelected ? "border-[#cf2027]/80 ring-2 ring-red-500/5 bg-[#cf2027]/[0.01]" : "border-slate-200"
                     }`}
                   >
                     <div>
                       <div className="flex justify-between items-start gap-2">
-                        <h4 className="text-sm font-extrabold text-slate-900 tracking-tight leading-snug uppercase">
+                        <h4 className="text-sm font-black text-slate-950 tracking-tight leading-snug uppercase">
                           {pkg.name}
                         </h4>
-                        <span className="flex-shrink-0 text-[10px] font-mono bg-emerald-100 text-emerald-800 font-extrabold px-2 py-0.5 rounded-full">
+                        <span className="flex-shrink-0 text-[10px] font-mono bg-red-50 text-[#cf2027] border border-red-100 font-black px-2 py-0.5 rounded-full">
                           Save {pkg.saving}%
                         </span>
                       </div>
@@ -140,7 +140,7 @@ export function TestFinder({
                       ) : (
                         <button
                           onClick={() => onAddPackage(pkg.id)}
-                          className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1 shadow-sm shadow-emerald-500/10 cursor-pointer"
+                          className="bg-[#cf2027] hover:bg-red-650 hover:bg-red-600 text-white px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1 shadow-sm shadow-red-500/15 cursor-pointer"
                         >
                           <Plus className="w-3.5 h-3.5" />
                           <span>Buy Package</span>
@@ -155,8 +155,8 @@ export function TestFinder({
 
           {/* B. Lab Test catalog with custom filters */}
           <div className="space-y-4">
-            <h3 className="text-base font-extrabold uppercase tracking-wide text-slate-800 flex items-center gap-2">
-              <Filter className="w-5 h-5 text-emerald-500" />
+            <h3 className="text-base font-black uppercase tracking-wide text-slate-900 flex items-center gap-2">
+              <Filter className="w-5 h-5 text-[#cf2027]" />
               <span>Clinical Test Catalog (100+ Parameter Assays)</span>
             </h3>
 
@@ -171,7 +171,7 @@ export function TestFinder({
                   placeholder="Search CBC, ALT, Thyroid, Blood Group..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="bg-slate-50 border border-slate-300 rounded-xl pl-11 pr-4 py-2.5 text-slate-800 text-sm w-full focus:ring-2 focus:ring-emerald-500/15 focus:border-emerald-500 focus:outline-none"
+                  className="bg-slate-50 border border-slate-300 rounded-xl pl-11 pr-4 py-2.5 text-slate-800 text-sm w-full focus:ring-2 focus:ring-red-500/15 focus:border-[#cf2027] focus:outline-none"
                 />
               </div>
 
@@ -225,7 +225,7 @@ export function TestFinder({
                             <td className="py-4 px-4">
                               <div className="flex items-center gap-2 max-w-xs sm:max-w-md">
                                 <div>
-                                  <h4 className="font-bold text-slate-900 uppercase flex items-center gap-1.5 group-hover:text-emerald-600 transition">
+                                  <h4 className="font-bold text-slate-900 uppercase flex items-center gap-1.5 group-hover:text-[#cf2027] transition">
                                     <span>{test.name}</span>
                                     <button
                                       onClick={() => setSelectedDetailsTest(test)}
@@ -276,7 +276,7 @@ export function TestFinder({
                               ) : (
                                 <button
                                   onClick={() => onAddTest(test.id)}
-                                  className="text-[11px] font-bold text-emerald-500 bg-emerald-50 hover:bg-emerald-500 hover:text-slate-950 px-3 py-1.5 rounded-lg border border-emerald-500/30 transition-all cursor-pointer mx-auto flex items-center justify-center gap-0.5 hover:shadow-sm"
+                                  className="text-[11px] font-black text-[#cf2027] bg-red-50 hover:bg-[#cf2027] hover:text-white px-3 py-1.5 rounded-lg border border-red-500/20 transition-all cursor-pointer mx-auto flex items-center justify-center gap-0.5 hover:shadow-sm"
                                 >
                                   <Plus className="w-3 h-3" />
                                   <span>Cart</span>
@@ -297,21 +297,21 @@ export function TestFinder({
         </div>
 
         {/* Right Area: Dynamic Shopping Cart Drawer Sticky section */}
-        <div className="lg:col-span-4 sticky top-28 bg-slate-900 text-white rounded-3xl p-6 shadow-xl border border-slate-800">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
-            <h3 className="text-sm font-extrabold uppercase tracking-widest text-emerald-400 flex items-center gap-2">
+        <div className="lg:col-span-4 sticky top-28 bg-white text-slate-900 rounded-3xl p-6 shadow-sm border border-slate-200">
+          <div className="flex items-center justify-between border-b border-slate-200 pb-4 mb-4">
+            <h3 className="text-sm font-black uppercase tracking-widest text-[#cf2027] flex items-center gap-2">
               <ShoppingCart className="w-5 h-5 animate-pulse" />
               <span>Phlebotomy Selection Cart</span>
             </h3>
-            <span className="font-mono text-xs text-emerald-400 bg-slate-850 px-2 py-0.5 rounded font-bold">
+            <span className="font-mono text-xs text-[#cf2027] bg-red-50 px-2 py-0.5 rounded border border-red-100 font-black">
               {cartedTests.length + cartedPackages.length} Selected
             </span>
           </div>
 
           {cartedTests.length === 0 && cartedPackages.length === 0 ? (
             <div className="text-center py-10 space-y-3.5">
-              <ShoppingCart className="w-10 h-10 text-slate-700 mx-auto" />
-              <p className="text-xs text-slate-500 italic max-w-xs mx-auto">
+              <ShoppingCart className="w-10 h-10 text-slate-350 mx-auto" />
+              <p className="text-xs text-slate-550 italic max-w-xs mx-auto">
                 No items are currently in your collection cart. Select tests or health profiles on the left sidebar to schedule home sample drawing!
               </p>
             </div>
@@ -326,15 +326,15 @@ export function TestFinder({
                   const pItem = HEALTH_PACKAGES.find((pkg) => pkg.id === id);
                   if (!pItem) return null;
                   return (
-                    <div key={id} className="bg-slate-950/60 p-3 rounded-xl border border-slate-800/80 flex justify-between items-center gap-2">
+                    <div key={id} className="bg-slate-50 p-3 rounded-xl border border-slate-200 flex justify-between items-center gap-2">
                       <div className="truncate text-left">
-                        <span className="text-[8px] bg-emerald-500 text-slate-950 font-bold px-1 rounded block w-fit uppercase font-mono">Pkg Offer</span>
-                        <h4 className="text-xs font-bold text-slate-200 truncate mt-1 uppercase max-w-[150px]">{pItem.name}</h4>
-                        <p className="text-[10px] font-mono text-emerald-400 font-medium leading-none mt-1">PKR {pItem.price}</p>
+                        <span className="text-[8px] bg-red-50 text-[#cf2027] border border-red-100 font-black px-1.5 rounded block w-fit uppercase font-mono">Pkg Offer</span>
+                        <h4 className="text-xs font-black text-slate-900 truncate mt-1 uppercase max-w-[150px]">{pItem.name}</h4>
+                        <p className="text-[10px] font-mono text-[#cf2027] font-black leading-none mt-1">PKR {pItem.price}</p>
                       </div>
                       <button
                         onClick={() => onRemovePackage(id)}
-                        className="text-slate-500 hover:text-rose-400 p-1.5 transition cursor-pointer"
+                        className="text-slate-400 hover:text-red-650 p-1.5 transition cursor-pointer"
                         title="Remove Package"
                       >
                         <Trash className="w-3.5 h-3.5" />
@@ -348,15 +348,15 @@ export function TestFinder({
                   const tItem = LAB_TESTS.find((test) => test.id === id);
                   if (!tItem) return null;
                   return (
-                    <div key={id} className="bg-slate-950/60 p-3 rounded-xl border border-slate-800/80 flex justify-between items-center gap-2">
+                    <div key={id} className="bg-slate-50 p-3 rounded-xl border border-slate-200 flex justify-between items-center gap-2">
                       <div className="truncate text-left">
-                        <span className="text-[8px] bg-slate-800 text-slate-400 font-bold px-1 rounded block w-fit uppercase font-mono">Blood Lab</span>
-                        <h4 className="text-xs font-bold text-slate-200 truncate mt-1 uppercase max-w-[150px]">{tItem.name}</h4>
-                        <p className="text-[10px] font-mono text-emerald-400 font-medium leading-none mt-1">PKR {tItem.price}</p>
+                        <span className="text-[8px] bg-red-50 text-[#cf2027] border border-red-100 font-black px-1.5 rounded block w-fit uppercase font-mono">Blood Lab</span>
+                        <h4 className="text-xs font-black text-slate-900 truncate mt-1 uppercase max-w-[150px]">{tItem.name}</h4>
+                        <p className="text-[10px] font-mono text-[#cf2027] font-black leading-none mt-1">PKR {tItem.price}</p>
                       </div>
                       <button
                         onClick={() => onRemoveTest(id)}
-                        className="text-slate-500 hover:text-rose-400 p-1.5 transition cursor-pointer"
+                        className="text-slate-400 hover:text-red-500 p-1.5 transition cursor-pointer"
                         title="Remove Test"
                       >
                         <Trash className="w-3.5 h-3.5" />
@@ -368,29 +368,29 @@ export function TestFinder({
               </div>
 
               {/* Subtotal summary section */}
-              <div className="border-t border-slate-800/80 pt-4 space-y-2.5 font-sans">
-                <div className="flex justify-between text-xs text-slate-400">
+              <div className="border-t border-slate-200 pt-4 space-y-2.5 font-sans">
+                <div className="flex justify-between text-xs text-slate-600">
                   <span>Home collection service fee</span>
-                  <span className="text-emerald-400 font-bold font-mono">FREE Collection</span>
+                  <span className="text-[#cf2027] font-black font-mono">FREE Collection</span>
                 </div>
                 <div className="flex justify-between items-end">
-                  <span className="text-xs text-slate-300">Total Valuation</span>
-                  <span className="text-lg font-black font-mono text-slate-100">PKR {totalCartAmount}</span>
+                  <span className="text-xs text-slate-700 font-medium">Total Valuation</span>
+                  <span className="text-lg font-black font-mono text-slate-950">PKR {totalCartAmount}</span>
                 </div>
               </div>
 
               {/* Action checkout button */}
               <button
                 onClick={onProceedToBooking}
-                className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 py-3.5 rounded-xl text-xs w-full transition shadow-md shadow-emerald-500/10 cursor-pointer flex items-center justify-center gap-1.5"
+                className="bg-[#cf2027] hover:bg-red-600 text-white font-bold px-4 py-3.5 rounded-xl text-xs w-full transition shadow-md shadow-red-500/15 cursor-pointer flex items-center justify-center gap-1.5"
               >
                 <span>Proceed To Home Sampling</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
 
-              <div className="flex items-start gap-2 bg-slate-950/40 p-3 rounded-xl border border-slate-800">
-                <ShieldAlert className="w-4.5 h-4.5 text-emerald-500 flex-shrink-0 mt-0.5" />
-                <p className="text-[9.5px] text-slate-500 leading-normal lowercase normal-case">
+              <div className="flex items-start gap-2 bg-red-50/50 p-3 rounded-xl border border-red-100">
+                <ShieldAlert className="w-4.5 h-4.5 text-[#cf2027] flex-shrink-0 mt-0.5" />
+                <p className="text-[9.5px] text-slate-700 leading-normal lowercase normal-case font-semibold">
                   *All diagnostic samples are processed at our ISO 9001:2015 Accredited central laboratory platform under cold-chain surveillance parameters.*
                 </p>
               </div>
@@ -406,7 +406,7 @@ export function TestFinder({
       {selectedDetailsTest && (
         <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="bg-white border rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl relative text-left">
-            <h4 className="text-xs font-mono uppercase text-emerald-600 font-extrabold tracking-wider">Test Details Parameter</h4>
+            <h4 className="text-xs font-mono uppercase text-[#cf2027] font-black tracking-wider">Test Details Parameter</h4>
             <h3 className="font-display font-black text-xl text-slate-900 uppercase mt-1 leading-tight border-b border-slate-100 pb-3">{selectedDetailsTest.name}</h3>
 
             <div className="space-y-4.5 mt-5">
@@ -460,7 +460,7 @@ export function TestFinder({
                         onAddTest(selectedDetailsTest.id);
                         setSelectedDetailsTest(null);
                       }}
-                      className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-4.5 py-2.5 rounded-xl text-xs font-bold cursor-pointer transition shadow-md shadow-emerald-500/10"
+                      className="bg-[#cf2027] hover:bg-red-650 hover:bg-red-600 text-white px-4.5 py-2.5 rounded-xl text-xs font-black cursor-pointer transition shadow-md shadow-red-500/15"
                     >
                       Add To Cart
                     </button>
