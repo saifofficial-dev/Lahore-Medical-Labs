@@ -1,0 +1,6 @@
+{
+  "name": "Lahore Medical Lab & Diagnostic Centre",
+  "description": "A comprehensive clinical laboratory services platform with an integrated patient portal, automated test scheduler, medical test lookup, and AI-powered test and symptom advisor.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
