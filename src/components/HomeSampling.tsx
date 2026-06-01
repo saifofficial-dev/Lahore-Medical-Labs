@@ -116,6 +116,30 @@ export function HomeSampling({
       if (body.success) {
         setSuccessBooking(body.booking);
         onBookingSuccess(body.booking);
+
+        // Construct complete WhatsApp booking text
+        const itemsText = selectedNames.length > 0
+          ? `\n- ${selectedNames.join("\n- ")}`
+          : "None";
+
+        const message = `Hello Lahore Medical Lab, I have submitted a Home Sample Collection Booking request!
+
+*Reference Booking ID:* ${body.booking.id}
+*Patient Name:* ${patientName}
+*Patient Phone:* ${phone}
+${email ? `*Patient Email:* ${email}\n` : ""}*Appointment Date:* ${preferredDate}
+*Preferred Time Slot:* ${preferredTime}
+*Collection Address:* ${address}
+*Payment Preference:* ${paymentMethod}
+
+*Selected Tests & Health Packages:*${itemsText}
+
+*Estimated Grand Total:* PKR ${totalAmount}
+
+Please assign a clinical phlebotomist dispatcher to confirm my booking. Thank you!`;
+
+        const finalWaUrl = `https://wa.me/923036088497?text=${encodeURIComponent(message)}`;
+        window.open(finalWaUrl, "_blank", "noopener,noreferrer");
       } else {
         setErrorText(body.message || "Failed to catalog your booking request.");
       }

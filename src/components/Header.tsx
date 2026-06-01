@@ -30,21 +30,42 @@ export function Header({
   return (
     <header className="sticky top-0 z-50 bg-white text-slate-900 border-b border-slate-200 shadow-sm font-sans">
       {/* Top Banner Alert (Operating details) */}
-      <div className="bg-[#cf2027] text-white text-[11px] sm:text-[13px] py-2 px-4 font-mono font-bold flex justify-between items-center tracking-tight border-b border-red-700">
-        <div className="flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-white animate-pulse"></span>
-          <span>Lahore Lab Care Open 24/7 &bull; Quality Is Our Priority</span>
-        </div>
-        <div className="flex items-center gap-4 divide-x divide-white/20">
-          <div className="flex items-center gap-1.5 pl-2">
-            <ShieldCheck className="w-3.5 h-3.5 text-white" />
-            <span className="hidden sm:inline">ISO 9001 & Joint Commission Accredited</span>
-            <span className="sm:hidden">Accredited</span>
-          </div>
-          <div className="flex items-center gap-1 pl-2">
-            <MapPin className="w-3.5 h-3.5 text-white" />
-            <span>Lahore & Gujrat</span>
-          </div>
+      <div className="bg-[#cf2027] text-white text-[11px] sm:text-[13px] py-1.5 font-mono font-bold tracking-tight border-b border-red-700 overflow-hidden relative select-none flex items-center">
+        <style dangerouslySetInnerHTML={{__html: `
+          @keyframes topTicker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-33.333%, 0, 0); }
+          }
+          .custom-top-ticker {
+            display: inline-flex;
+            white-space: nowrap;
+            animation: topTicker 30s linear infinite;
+          }
+          .custom-top-ticker:hover {
+            animation-play-state: paused;
+          }
+        `}} />
+        
+        <div className="custom-top-ticker flex items-center gap-12 pr-12">
+          {Array(3).fill(null).map((_, groupIdx) => (
+            <div key={groupIdx} className="flex items-center gap-12 flex-shrink-0">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+                <span>Lahore Lab Care Open 24/7 &bull; Quality Is Our Priority</span>
+              </div>
+              <span className="text-white/40">&bull;</span>
+              <div className="flex items-center gap-1.5">
+                <ShieldCheck className="w-3.5 h-3.5 text-white flex-shrink-0" />
+                <span>ISO 9001 & Joint Commission Accredited</span>
+              </div>
+              <span className="text-white/40">&bull;</span>
+              <div className="flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-white flex-shrink-0" />
+                <span>Lahore & Gujrat</span>
+              </div>
+              <span className="text-white/40">&bull;</span>
+            </div>
+          ))}
         </div>
       </div>
 

@@ -355,7 +355,7 @@ export default function App() {
                       </div>
 
                       {/* Right Medical Labs Slide Carousel */}
-                      <div className="lg:col-span-5 flex flex-col justify-between space-y-4" id="lab-image-carousel-container">
+                      <div className="lg:col-span-5 flex flex-col justify-between space-y-4 hover:scale-105 transition-transform duration-300 ease-in-out" id="lab-image-carousel-container">
                         <div 
                           className="relative w-full h-80 sm:h-96 rounded-3xl overflow-hidden shadow-2xl border border-slate-700/50 group bg-slate-950"
                           onMouseEnter={() => setIsCarouselHovered(true)}
@@ -436,6 +436,17 @@ export default function App() {
                                 title={`Slide ${idx + 1}`}
                               ></button>
                             ))}
+                          </div>
+
+                          {/* Progress bar tracking interval */}
+                          <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/10 z-30">
+                            <motion.div
+                              key={`${activeHeroSlide}-${isCarouselHovered}`}
+                              initial={{ width: "0%" }}
+                              animate={isCarouselHovered ? { width: "0%" } : { width: "100%" }}
+                              transition={isCarouselHovered ? { duration: 0 } : { duration: 5, ease: "linear" }}
+                              className="h-full bg-[#cf2027]"
+                            />
                           </div>
                         </div>
 
