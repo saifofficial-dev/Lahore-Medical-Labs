@@ -3,7 +3,6 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { PatientPortal } from "./components/PatientPortal";
 import { TestFinder } from "./components/TestFinder";
-import { AIAdvisor } from "./components/AIAdvisor";
 import { HomeSampling } from "./components/HomeSampling";
 import { ReportViewer } from "./components/ReportViewer";
 import { LAB_TESTS, HEALTH_PACKAGES, LAHORE_BRANCHES } from "./data";
@@ -106,8 +105,8 @@ export default function App() {
   // Shopping cart popup modal state
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  // Active branch map index selection (defaults to 2 for Johar Town branch)
-  const [activeBranchIndex, setActiveBranchIndex] = useState(2);
+  // Active branch map index selection (defaults to 0 for Main Head Office / Johar Town HQ)
+  const [activeBranchIndex, setActiveBranchIndex] = useState(0);
 
   // Hero Quick-search state
   const [heroSearchInvoice, setHeroSearchInvoice] = useState("");
@@ -147,6 +146,26 @@ export default function App() {
 
   const handleRemovePackage = (id: string) => {
     setCartedPackages((prev) => prev.filter((item) => item !== id));
+  };
+
+  const handleProceedToWhatsAppBooking = () => {
+    const selectedTests = cartedTests.map((id) => LAB_TESTS.find((t) => t.id === id)).filter(Boolean);
+    const selectedPkgs = cartedPackages.map((id) => HEALTH_PACKAGES.find((p) => p.id === id)).filter(Boolean);
+    
+    const listNames = [
+      ...selectedTests.map((t) => t?.name),
+      ...selectedPkgs.map((p) => p?.name),
+    ];
+    
+    const itemsText = listNames.length > 0
+      ? `\n\n*Selected Diagnostics:* \n- ${listNames.join("\n- ")}`
+      : "";
+      
+    const totalText = cartTotals > 0 ? `\n*Estimated Total:* PKR ${cartTotals}` : "";
+    const message = `Hello Lahore Medical Lab, I'd like to book a Home Sample Collection.${itemsText}${totalText}\n\nPlease help me schedule my phlebotomist dispatcher appointment!`;
+    
+    const url = `https://wa.me/923036088497?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   // Triggers when a custom booking completes successfully
@@ -435,18 +454,22 @@ export default function App() {
                             </div>
                           </div>
 
-                          <div
-                            onClick={() => setTab("advisor")}
-                            className="bg-slate-50 hover:bg-slate-100 hover:border-[#cf2027]/35 border border-slate-200 p-4.5 rounded-2xl text-left cursor-pointer transition-all flex items-center gap-3 group"
+                           <a
+                            href="https://wa.me/923036088497?text=Hello%20Lahore%20Medical%20Lab.%20I%20want%20to%20inquire%20about%20diagnostic%20tests%20and%20home%20sample%20collection."
+                            target="_blank"
+                            referrerPolicy="no-referrer"
+                            className="bg-slate-50 hover:bg-slate-100 hover:border-emerald-500/35 border border-slate-200 p-4.5 rounded-2xl text-left cursor-pointer transition-all flex items-center gap-3 group"
                           >
-                            <div className="w-9 h-9 rounded-xl bg-red-500/10 border border-red-500/20 text-[#cf2027] flex items-center justify-center flex-shrink-0">
-                              <Cpu className="w-4.5 h-4.5 group-hover:scale-105 transition-transform" />
+                            <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-[#25D366] flex items-center justify-center flex-shrink-0">
+                              <svg className="w-4.5 h-4.5 group-hover:scale-110 transition-transform text-[#25D366] fill-[#25D366]" viewBox="0 0 24 24">
+                                <path d="M12.004 2C6.48 2 2 6.48 2 12.004c0 1.908.533 3.692 1.457 5.22L2 22l4.912-1.396A9.954 9.954 0 0012.004 22c5.52 0 10-4.48 10-10C22.004 6.48 17.524 2 12.004 2zm5.796 14.128c-.24.672-1.212 1.236-1.74 1.308-.48.06-1.08.084-2.88-.66-2.316-.948-3.792-3.288-3.912-3.444-.108-.156-.912-1.212-.912-2.316 0-1.104.576-1.644.78-1.86.204-.216.444-.264.588-.264h.42c.132 0 .312-.048.48.36.18.432.612 1.488.66 1.596.048.108.084.228 0 .42-.084.18-.18.288-.312.444-.132.156-.276.324-.396.444-.132.132-.276.276-.12.54.156.264.696 1.14 1.488 1.848.792.708 1.464.924 1.74 1.056.276.132.432.108.588-.072.156-.18.672-.78.852-1.044.18-.264.36-.216.612-.12.252.096 1.584.744 1.86.876.276.132.456.204.516.312.06.108.06.624-.18 1.296z" />
+                              </svg>
                             </div>
                             <div>
-                              <h4 className="text-[11px] font-mono font-black uppercase text-[#cf2027]">AI Diagnostics</h4>
-                              <p className="text-[12px] font-black text-slate-900 group-hover:text-[#cf2027] transition-colors">Symptom Test Advisor</p>
+                              <h4 className="text-[11px] font-mono font-black uppercase text-emerald-600">WhatsApp Live</h4>
+                              <p className="text-[12px] font-black text-slate-900 group-hover:text-emerald-600 transition-colors">Instant Support Chat</p>
                             </div>
-                          </div>
+                          </a>
                         </div>
 
                       </div>
@@ -579,7 +602,7 @@ export default function App() {
                                     <Building className={`w-5 h-5 flex-shrink-0 mt-0.5 ${isActive ? "text-[#cf2027]" : "text-slate-400"}`} />
                                     <div>
                                       <h4 className="font-black text-xs sm:text-sm uppercase tracking-tight text-slate-900">{branch.name}</h4>
-                                      {idx === 2 && (
+                                      {idx === 0 && (
                                         <span className="inline-block text-[8px] bg-red-100 text-[#cf2027] border border-red-200 px-1.5 py-0.5 rounded font-mono font-black mt-1 uppercase">
                                           ★ User Coordinate Verified Lab
                                         </span>
@@ -701,12 +724,9 @@ export default function App() {
                   onRemoveTest={handleRemoveTest}
                   onAddPackage={handleAddPackage}
                   onRemovePackage={handleRemovePackage}
-                  onProceedToBooking={() => setTab("booking")}
+                  onProceedToBooking={handleProceedToWhatsAppBooking}
                 />
               )}
-
-              {/* TAB: Gemini AI health advisor */}
-              {tab === "advisor" && <AIAdvisor />}
 
               {/* TAB: Home Sampling bookings scheduler */}
               {tab === "booking" && (
@@ -839,7 +859,7 @@ export default function App() {
                   <button
                     onClick={() => {
                       setIsCartOpen(false);
-                      setTab("booking");
+                      handleProceedToWhatsAppBooking();
                     }}
                     disabled={cartedTests.length === 0 && cartedPackages.length === 0}
                     className="bg-[#cf2027] hover:bg-red-650 hover:bg-red-600 disabled:opacity-50 text-white font-bold px-4 py-4 rounded-xl text-xs w-full transition shadow-md shadow-red-500/10 cursor-pointer flex items-center justify-center gap-1.5"
@@ -871,7 +891,7 @@ export default function App() {
 
         {/* Action Button Bubble */}
         <a
-          href="https://wa.me/923036088497?text=Hello%20Lahore%2520Medical%2520Lab.%20I%20want%2520to%20inquire%20about%2520diagnostic%2520tests%2520and%20home%20sample%20collection."
+          href="https://wa.me/923036088497?text=Hello%20Lahore%20Medical%20Lab.%20I%20want%20to%20inquire%20about%20diagnostic%20tests%20and%20home%20sample%20collection."
           target="_blank"
           referrerPolicy="no-referrer"
           className="relative w-14 h-14 rounded-full bg-[#25D366] text-white hover:bg-[#128C7E] flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 cursor-pointer"

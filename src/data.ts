@@ -300,15 +300,15 @@ export const DEMO_PATIENTS: PatientProfile[] = [
 
 export const LAHORE_BRANCHES = [
   {
-    name: "Main Head Office & Diagnostics (Gulberg)",
-    address: "12-C, Shadman 2, Opposite Punjab Institute of Cardiology (PIC), Lahore",
-    phone: "042-111-522-522, 0300-8884441",
+    name: "Main Head Office & Corporate Lab (Johar Town)",
+    address: "PIA Main Boulevard, Block D, PIA Housing Scheme, Near Johar Town, Lahore",
+    phone: "+92 303 6088497 (WhatsApp Only)",
     hours: "Open 24/7",
     services: ["Diagnostics Lab", "Home Collection Hub", "X-Ray / Chest Imaging", "Ultrasound Pelvis & Abdomen", "CT Scan (Associated)", "Pediatric Sampling Room"],
-    mapQuery: "Lahore Medical Lab Gulberg Lahore",
-    lat: 31.541544,
-    lng: 74.321300,
-    googleMapUrl: "https://www.google.com/maps/search/?api=1&query=12-C,+Shadman+2,+Opposite+Punjab+Institute+of+Cardiology+Lahore"
+    mapQuery: "31.4750214,74.2413483",
+    lat: 31.4750214,
+    lng: 74.2413483,
+    googleMapUrl: "https://www.google.com/maps/place/31%C2%B028'30.1%22N+74%C2%B014'28.9%22E/@31.4750214,74.2387734,609m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d31.4750214!4d74.2413483?hl=en&entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D"
   },
   {
     name: "DHA Collection Centre & Radiology",
