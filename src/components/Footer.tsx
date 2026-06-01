@@ -91,8 +91,8 @@ export function Footer({ setTab }: FooterProps) {
               <li className="flex items-start gap-2">
                 <Clock className="w-4 h-4 text-[#cf2027] mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="font-semibold text-slate-900">Lahore Lab Headquarters</p>
-                  <p className="text-[11px] text-slate-500">PIA Main Boulevard, Block D, PIA Housing Scheme, Near Johar Town, Lahore</p>
+                  <p className="font-semibold text-slate-900">Lahore Lab Main Branch</p>
+                  <p className="text-[11px] text-slate-500">Near Thokar Niaz Baig Station, Multan Road, Lahore</p>
                 </div>
               </li>
               <li className="flex items-center gap-2">
@@ -131,11 +131,16 @@ export function Footer({ setTab }: FooterProps) {
         </div>
 
         {/* Legal credentials */}
-        <div className="mt-8 pt-6 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-[11px] text-slate-500 tracking-tight text-center sm:text-left">
-            &copy; {new Date().getFullYear()} Lahore Medical Lab &amp; Diagnostic Centre. All rights reserved. Registered under Punjab Healthcare Commission (PHC).
-          </p>
-          <div className="flex items-center gap-1.5 text-[11px] text-slate-600">
+        <div className="mt-8 pt-6 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+          <div className="space-y-1">
+            <p className="text-[11px] text-slate-500 tracking-tight">
+              &copy; {new Date().getFullYear()} Lahore Medical Lab &amp; Diagnostic Centre. All rights reserved. Registered under Punjab Healthcare Commission (PHC).
+            </p>
+            <p className="text-[11px] text-slate-550">
+              Developed by <span className="font-bold text-slate-700">Saif Ur Rehman Akhtar</span>, Software Developer at <span className="font-bold text-slate-700">Khalis Group of Industries</span>
+            </p>
+          </div>
+          <div className="flex items-center gap-1.5 text-[11px] text-slate-600 flex-shrink-0">
             <span>Made with Care for Lahore Diagnostics</span>
             <Heart className="w-3 h-3 text-red-500 animate-pulse fill-red-500" />
           </div>

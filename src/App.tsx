@@ -287,69 +287,40 @@ export default function App() {
                           Lahore Chemical &amp; Clinical Laboratory delivers clinical chemistry, specialized hormonal assays, and advanced abdominal radiological investigations under over 4 decades of physician trust. 
                         </p>
 
-                        {/* Interactive Hero Quick-Search Box (Report downloader) */}
-                        <div className="bg-slate-50 border border-slate-200 p-5 rounded-2.5xl max-w-lg mt-8 shadow-sm">
-                          <h3 className="text-xs font-mono font-black uppercase text-[#cf2027] tracking-widest flex items-center gap-1.5 mb-2 leading-none">
-                            <Activity className="w-3.5 h-3.5 text-[#cf2027]" />
-                            <span>Retrieve Lab Reports Instantly Online</span>
-                          </h3>
-                          <p className="text-[11px] text-slate-600 mb-4 font-normal">
-                            Retrieve current lab reports by entering your invoice receipt code instantly below.
-                          </p>
-
-                          <form
-                            onSubmit={(e) => {
-                              e.preventDefault();
-                              if (heroSearchInvoice.trim()) {
-                                handleInspectReportByInvoice(heroSearchInvoice);
-                              }
-                            }}
-                            className="flex flex-col sm:flex-row gap-2"
+                        {/* Action buttons and clinical stats instead of report searcher */}
+                        <div className="flex flex-col sm:flex-row gap-4 pt-4" id="hero-actions-container">
+                          <button
+                            onClick={() => setTab("tests")}
+                            className="bg-[#cf2027] hover:bg-red-600 text-white font-bold px-7 py-4 rounded-xl text-xs sm:text-sm transition-all duration-300 cursor-pointer flex items-center justify-center gap-2 shadow-lg shadow-red-500/15"
                           >
-                            <input
-                              type="text"
-                              placeholder="Enter Invoice No (e.g. LL-2026-9876)"
-                              value={heroSearchInvoice}
-                              onChange={(e) => setHeroSearchInvoice(e.target.value)}
-                              className="bg-white border border-slate-300 rounded-xl px-4 py-3 placeholder-slate-400 text-sm focus:ring-2 focus:ring-red-500/25 focus:border-[#cf2027] focus:outline-none flex-grow font-mono uppercase tracking-wider text-slate-900"
-                            />
-                            <button
-                              type="submit"
-                              className="bg-[#cf2027] hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl text-xs transition cursor-pointer flex items-center justify-center gap-1.5 flex-shrink-0 shadow-lg shadow-red-500/15"
-                            >
-                              <Search className="w-4.5 h-4.5" />
-                              <span>Inspect Report</span>
-                            </button>
-                          </form>
+                            <span>Explore Catalog &amp; Prices</span>
+                            <ArrowRight className="w-4 h-4" />
+                          </button>
+                          <button
+                            onClick={() => setTab("booking")}
+                            className="bg-slate-50 hover:bg-slate-100 border border-slate-300 text-slate-800 font-bold px-7 py-4 rounded-xl text-xs sm:text-sm transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
+                          >
+                            <span>Schedule Home Sampling</span>
+                          </button>
+                        </div>
 
-                          {heroSearchError && (
-                            <p className="text-xs text-rose-600 font-semibold mt-2.5 flex items-center gap-1">
-                              <span>⚠</span>
-                              <span className="lowercase normal-case">{heroSearchError}</span>
-                            </p>
-                          )}
-
-                          <div className="text-[10px] text-slate-600 mt-3 font-mono flex flex-wrap gap-2.5">
-                            <span>Suggestions:</span>
-                            <button 
-                              onClick={() => {
-                                setHeroSearchInvoice("LL-2026-9876");
-                                handleInspectReportByInvoice("LL-2026-9876");
-                              }}
-                              className="text-[#cf2027] hover:underline cursor-pointer font-black"
-                            >
-                              "LL-2026-9876" (Ali)
-                            </button>
-                            <span>|</span>
-                            <button 
-                              onClick={() => {
-                                setHeroSearchInvoice("LL-2026-1212");
-                                handleInspectReportByInvoice("LL-2026-1212");
-                              }}
-                              className="text-[#cf2027] hover:underline cursor-pointer font-black"
-                            >
-                              "LL-2026-1212" (Ayesha)
-                            </button>
+                        {/* Professional Lab Statistics indicators */}
+                        <div className="pt-6 grid grid-cols-2 gap-4 max-w-lg" id="hero-lab-stats-grid">
+                          <div className="bg-slate-50/50 p-4 rounded-2xl border border-slate-200 text-left">
+                            <span className="text-[#cf2027] font-sans font-black text-2xl tracking-tight block">40+ Years</span>
+                            <span className="text-[11px] font-medium text-slate-500 font-sans block mt-0.5">Physician Trust &amp; Legacy</span>
+                          </div>
+                          <div className="bg-slate-50/50 p-4 rounded-2xl border border-slate-200 text-left">
+                            <span className="text-[#cf2027] font-sans font-black text-2xl tracking-tight block">ISO 9001:2015</span>
+                            <span className="text-[11px] font-medium text-slate-500 font-sans block mt-0.5">Certified &amp; Accredited</span>
+                          </div>
+                          <div className="bg-slate-50/50 p-4 rounded-2xl border border-slate-200 text-left">
+                            <span className="text-[#cf2027] font-sans font-black text-2xl tracking-tight block">100% Sterile</span>
+                            <span className="text-[11px] font-medium text-slate-500 font-sans block mt-0.5">Cold-Chain Sample Logistics</span>
+                          </div>
+                          <div className="bg-slate-50/50 p-4 rounded-2xl border border-slate-200 text-left">
+                            <span className="text-[#cf2027] font-sans font-black text-2xl tracking-tight block">Open 24/7</span>
+                            <span className="text-[11px] font-medium text-slate-500 font-sans block mt-0.5">Always Available Services</span>
                           </div>
                         </div>
                       </div>
@@ -506,9 +477,9 @@ export default function App() {
                         <div className="w-10 h-10 rounded-xl bg-red-500/10 text-red-650 text-[#cf2027] flex items-center justify-center">
                           <MapPin className="w-5 h-5" />
                         </div>
-                        <h3 className="font-bold text-slate-900 uppercase text-xs tracking-wider font-mono">Vast Punjab Collection Network</h3>
+                        <h3 className="font-bold text-slate-900 uppercase text-xs tracking-wider font-mono">Central Laboratory Presence</h3>
                         <p className="text-xs text-slate-500 leading-relaxed">
-                          Accessible blood draw booths stationed across Lahore (Gulberg, DHA, Johar Town, Iqbal Town) and Gujrat divisional offices.
+                          Our main laboratory is conveniently located near Thokar Niaz Baig Station on Multan Road in Lahore, serving Lahore and Gujrat regions.
                         </p>
                       </div>
 
@@ -585,10 +556,10 @@ export default function App() {
                   </div>                  {/* D. Lahore & Gujrat Branch finder map list directory */}
                   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left" id="branches-list">
                     <div className="max-w-3xl mb-8 space-y-2">
-                      <span className="text-[10px] font-mono uppercase text-red-500 font-extrabold tracking-widest block font-bold">Geographic Network</span>
-                      <h3 className="font-display font-black text-2.5xl text-slate-900 uppercase leading-none">Our Diagnostic Branches &amp; Collection Hubs</h3>
+                      <span className="text-[10px] font-mono uppercase text-red-500 font-extrabold tracking-widest block font-bold">Geographic Location</span>
+                      <h3 className="font-display font-black text-2.5xl text-slate-900 uppercase leading-none">Our Central Laboratory Location</h3>
                       <p className="text-slate-500 text-xs sm:text-sm">
-                        Prefer on-site extraction or chest radiological imaging? Select any branch from our verified medical collection outlets below to pin its exact coordinate mapping on the adjacent live Google Map.
+                        Prefer on-site extraction or chest radiological imaging? Visit our state-of-the-art medical collection branch located near Thokar Niaz Baig Station on Multan Road, Lahore. View the exact coordinate mapping on the adjacent live Google Map.
                       </p>
                     </div>
 
